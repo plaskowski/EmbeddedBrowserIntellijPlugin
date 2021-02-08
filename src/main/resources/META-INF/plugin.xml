@@ -7,4 +7,9 @@
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="EmbeddedBrowser" anchor="right"
+            factoryClass="com.github.plaskowski.embeddedbrowserintellijplugin.ui.EmbeddedBrowserToolWindowFactory"/>
+    </extensions>
+
 </idea-plugin>

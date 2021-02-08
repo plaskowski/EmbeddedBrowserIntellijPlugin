@@ -37,7 +37,7 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
   - https://plugins.jetbrains.com/plugin/16068-embeddedbrowserintellijplugin/versions/stable/110222
 
 
-###Resources about plugin development
+### Resources about plugin development
 
 - https://plugins.jetbrains.com/docs/intellij/getting-started.html
 - https://plugins.jetbrains.com/docs/intellij/welcome.html

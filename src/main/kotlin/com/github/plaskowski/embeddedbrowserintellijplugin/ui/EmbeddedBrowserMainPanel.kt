@@ -39,16 +39,23 @@ class EmbeddedBrowserMainPanel(initialUrl: String) : SimpleToolWindowPanel(true,
 
     private fun buildToolbar(initialUrl: String): JToolBar {
         val toolbar = JToolBar()
+        val backButton = createToolbarIconButton("/actions/back.png")
         val urlTextField = JTextField(initialUrl)
         val refreshButton = createToolbarIconButton("/actions/refresh.png")
         val zoomInButton = createToolbarIconButton("/general/zoomIn.png")
         val zoomOutButton = createToolbarIconButton("/general/zoomOut.png")
 
+        backButton.addActionListener {
+            if (jbCefBrowser.cefBrowser.canGoBack()) {
+                jbCefBrowser.cefBrowser.goBack()
+            }
+        }
         urlTextField.addActionListener { jbCefBrowser.loadURL(urlTextField.text) }
         refreshButton.addActionListener { jbCefBrowser.cefBrowser.reload() }
         zoomInButton.addActionListener { jbCefBrowser.zoomLevelEx *= ZOOM_IN_STEP }
         zoomOutButton.addActionListener { jbCefBrowser.zoomLevelEx *= ZOOM_OUT_STEP }
 
+        toolbar.add(backButton)
         toolbar.add(urlTextField)
         toolbar.add(refreshButton)
         toolbar.add(zoomInButton)

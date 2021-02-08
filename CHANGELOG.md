@@ -3,12 +3,15 @@
 # EmbeddedBrowserIntellijPlugin Changelog
 
 ## [Unreleased]
+### Added
+- "back" action
+  
+### Changed
+-  Update URL field when navigating from displayed page
 
 ## [0.0.2]
-### Changes
-- Added "EmbeddedBrowser" tool window containing
-  - embedded chromium frame (https://plugins.jetbrains.com/docs/intellij/jcef.html)
-  - toolbar with URL field and reload, zoom in and zoom out actions
+### Added
+- "EmbeddedBrowser" tool window containing embedded [chromium frame](https://plugins.jetbrains.com/docs/intellij/jcef.html) and toolbar with URL field and reload, zoom in and zoom out actions
 
 ## [0.0.1]
 ### Added

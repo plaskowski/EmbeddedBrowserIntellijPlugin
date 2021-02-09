@@ -43,6 +43,7 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 - https://plugins.jetbrains.com/docs/intellij/welcome.html
 - https://github.com/JetBrains/intellij-sdk-code-samples
 - https://github.com/JetBrains/intellij-platform-plugin-template
+- https://blog.jetbrains.com/platform/
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].

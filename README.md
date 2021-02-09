@@ -22,6 +22,24 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
   Download the [latest release](https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
+## Configuration
+
+Add following properties to PropertiesComponent in your `.idea/workspace.xml`:
+- `com.github.plaskowski.embeddedbrowserintellijplugin.initial_url` - the initial URL to load
+- `com.github.plaskowski.embeddedbrowserintellijplugin.cache_path` - a folder where browser should store its state 
+  - configure this if you want the browser state (sessions, cookies) to persist between IDE restarts
+  - :warning: this may not be secure, use it at your own risk
+
+Example:
+```
+  <component name="PropertiesComponent">
+    ...
+    <property name="com.github.plaskowski.embeddedbrowserintellijplugin.initial_url" value="https://youtube.com" />
+    <property name="com.github.plaskowski.embeddedbrowserintellijplugin.cache_path" value="$USER_HOME$/.cef_cache" />
+    ...
+  </component>
+```
+
 ## Roadmap
 
 - persisting cookies between IDE reloads

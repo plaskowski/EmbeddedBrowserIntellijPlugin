@@ -4,16 +4,9 @@
 
 ## [Unreleased]
 ### Added
+- configurable initial URL
+- option to have browser retain its state (sessions, cookies) between IDE restarts
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.3]
 ### Added
 - "back" action

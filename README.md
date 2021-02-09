@@ -25,6 +25,7 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 ## Roadmap
 
 - persisting cookies between IDE reloads
+  - https://magpcss.org/ceforum/viewtopic.php?f=6&t=17046
 - mobile mode for better instagram browsing experience?
 
 

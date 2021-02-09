@@ -28,15 +28,6 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 - mobile mode for better instagram browsing experience?
 
 
-## Project TODO list
-
-- Configure automatic deployment to Marketplace
-  - [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html)
-  - ...?
-- Fill "What is new" in plugin page
-  - https://plugins.jetbrains.com/plugin/16068-embeddedbrowserintellijplugin/versions/stable/110222
-
-
 ### Resources about plugin development
 
 - https://plugins.jetbrains.com/docs/intellij/getting-started.html
@@ -44,6 +35,7 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 - https://github.com/JetBrains/intellij-sdk-code-samples
 - https://github.com/JetBrains/intellij-platform-plugin-template
 - https://blog.jetbrains.com/platform/
+- https://plugins.jetbrains.com/intellij-platform-explorer/
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].

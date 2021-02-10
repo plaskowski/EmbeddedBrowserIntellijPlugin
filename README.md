@@ -30,6 +30,7 @@ Add following properties to PropertiesComponent in your `.idea/workspace.xml`:
   - configure this if you want the browser state (sessions, cookies) to persist between IDE restarts
   - :warning: this may not be secure, use it at your own risk
 - `com.github.plaskowski.embeddedbrowserintellijplugin.user_agent` - custom User-Agent header
+  - set mobile-like User-Agent to browse sites in their mobile versions that better fit limited tool window space
 
 > :warning: `cache_path` and `user_agent` modify global CEF settings so other CEF instances in IDE will be affected
 
@@ -47,9 +48,7 @@ Example:
 
 ## Roadmap
 
-- persisting cookies between IDE reloads
-  - https://magpcss.org/ceforum/viewtopic.php?f=6&t=17046
-- mobile mode for better instagram browsing experience?
+- ...?
 
 
 ### Resources about plugin development

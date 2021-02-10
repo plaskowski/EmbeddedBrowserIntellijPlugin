@@ -6,6 +6,7 @@
 ### Added
 - configurable initial URL
 - option to have browser retain its state (sessions, cookies) between IDE restarts
+- configurable User-Agent header
 
 ## [0.0.3]
 ### Added

@@ -29,6 +29,9 @@ Add following properties to PropertiesComponent in your `.idea/workspace.xml`:
 - `com.github.plaskowski.embeddedbrowserintellijplugin.cache_path` - a folder where browser should store its state 
   - configure this if you want the browser state (sessions, cookies) to persist between IDE restarts
   - :warning: this may not be secure, use it at your own risk
+- `com.github.plaskowski.embeddedbrowserintellijplugin.user_agent` - custom User-Agent header
+
+> :warning: `cache_path` and `user_agent` modify global CEF settings so other CEF instances in IDE will be affected
 
 Example:
 ```
@@ -36,6 +39,8 @@ Example:
     ...
     <property name="com.github.plaskowski.embeddedbrowserintellijplugin.initial_url" value="https://youtube.com" />
     <property name="com.github.plaskowski.embeddedbrowserintellijplugin.cache_path" value="$USER_HOME$/.cef_cache" />
+    <property name="com.github.plaskowski.embeddedbrowserintellijplugin.user_agent" 
+      value="Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1" />
     ...
   </component>
 ```

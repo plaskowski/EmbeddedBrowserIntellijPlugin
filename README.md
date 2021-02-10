@@ -24,7 +24,7 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 
 ## Configuration
 
-As for now the plugin options can set by editing `.idea/workspace.xml` (remember to close the IDE before editing it).
+As for now the plugin options can be set only by editing `.idea/workspace.xml` (remember to close the IDE before editing it).
 
 You can add following optional properties to PropertiesComponent in `.idea/workspace.xml`:
 - `com.github.plaskowski.embeddedbrowserintellijplugin.initial_url` - the initial URL to load

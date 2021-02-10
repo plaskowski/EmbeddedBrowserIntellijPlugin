@@ -14,7 +14,7 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 
 - Using IDE built-in plugin system:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "EmbeddedBrowserIntellijPlugin"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "EmbeddedBrowser"</kbd> >
   <kbd>Install Plugin</kbd>
   
 - Manually:

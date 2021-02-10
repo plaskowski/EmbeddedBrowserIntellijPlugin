@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.plaskowski.embeddedbrowserintellijplugin</id>
-    <name>EmbeddedBrowserIntellijPlugin</name>
+    <name>EmbeddedBrowser</name>
     <vendor>plaskowski</vendor>
 
     <!-- Product and plugin compatibility requirements -->

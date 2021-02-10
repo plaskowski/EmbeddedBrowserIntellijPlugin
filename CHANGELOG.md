@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [0.0.4]
+### Added
 - configurable initial URL
 - option to have browser retain its state (sessions, cookies) between IDE restarts
 - configurable User-Agent header

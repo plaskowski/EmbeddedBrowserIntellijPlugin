@@ -24,7 +24,9 @@ Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 
 ## Configuration
 
-Add following properties to PropertiesComponent in your `.idea/workspace.xml`:
+As for now the plugin options can set by editing `.idea/workspace.xml` (remember to close the IDE before editing it).
+
+You can add following optional properties to PropertiesComponent in `.idea/workspace.xml`:
 - `com.github.plaskowski.embeddedbrowserintellijplugin.initial_url` - the initial URL to load
 - `com.github.plaskowski.embeddedbrowserintellijplugin.cache_path` - a folder where browser should store its state 
   - configure this if you want the browser state (sessions, cookies) to persist between IDE restarts
@@ -32,7 +34,7 @@ Add following properties to PropertiesComponent in your `.idea/workspace.xml`:
 - `com.github.plaskowski.embeddedbrowserintellijplugin.user_agent` - custom User-Agent header
   - set mobile-like User-Agent to browse sites in their mobile versions that better fit limited tool window space
 
-> :warning: `cache_path` and `user_agent` modify global CEF settings so other CEF instances in IDE will be affected
+> :warning: *WARNING* `cache_path` and `user_agent` modify global CEF settings so other CEF instances in IDE will be affected
 
 Example:
 ```
@@ -48,6 +50,7 @@ Example:
 
 ## Roadmap
 
+- Settings UI
 - ...?
 
 

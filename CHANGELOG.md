@@ -4,16 +4,11 @@
 
 ## [Unreleased]
 ### Added
+- custom plugin icon
 
 ### Changed
+- tool window title to include space
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.4]
 ### Added
 - configurable initial URL

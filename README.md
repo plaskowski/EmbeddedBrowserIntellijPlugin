@@ -63,6 +63,10 @@ Example:
 - https://blog.jetbrains.com/platform/
 - https://plugins.jetbrains.com/intellij-platform-explorer/
 
+### References
+
+- cat in the plugin logo comes from [Noto Emoji set by Google Inc](https://iconify.design/icon-sets/noto-v1/cat.html) (Apache 2.0 license)
+
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
 

@@ -8,7 +8,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="EmbeddedBrowser" anchor="right"
+        <toolWindow id="Embedded Browser" anchor="right"
             factoryClass="com.github.plaskowski.embeddedbrowserintellijplugin.ui.EmbeddedBrowserToolWindowFactory"/>
     </extensions>
 

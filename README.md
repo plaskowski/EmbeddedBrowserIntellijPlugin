@@ -1,8 +1,8 @@
 # EmbeddedBrowserIntellijPlugin
 
 ![Build](https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/com.github.plaskowski.embeddedbrowserintellijplugin.svg)](https://plugins.jetbrains.com/plugin/com.github.plaskowski.embeddedbrowserintellijplugin)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/com.github.plaskowski.embeddedbrowserintellijplugin.svg)](https://plugins.jetbrains.com/plugin/com.github.plaskowski.embeddedbrowserintellijplugin)
+[![Version](https://img.shields.io/jetbrains/plugin/v/16068.svg)](https://plugins.jetbrains.com/plugin/16068)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/16068.svg)](https://plugins.jetbrains.com/plugin/16068)
 
 <!-- Plugin description -->
 This is a plugin for Intellij providing a browser embedded into tool window

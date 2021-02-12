@@ -50,6 +50,7 @@ Example:
 
 ## Roadmap
 
+- make it not disappear during indexing
 - Settings UI
 - ...?
 

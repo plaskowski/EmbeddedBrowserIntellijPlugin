@@ -3,17 +3,9 @@
 # EmbeddedBrowserIntellijPlugin Changelog
 
 ## [Unreleased]
-### Added
-
 ### Changed
+- tool window is no longer blocked during indexing
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.5]
 ### Added
 - custom plugin icon

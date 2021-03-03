@@ -1,6 +1,7 @@
 package com.github.plaskowski.embeddedbrowserintellijplugin.ui
 
 import com.intellij.ide.util.PropertiesComponent
+import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
@@ -13,7 +14,7 @@ private const val USER_AGENT_KEY = "com.github.plaskowski.embeddedbrowserintelli
 private const val DEFAULT_INITIAL_URL = "https://youtube.com"
 
 // I followed FavoritesViewToolWindowFactory as example
-class EmbeddedBrowserToolWindowFactory : ToolWindowFactory {
+class EmbeddedBrowserToolWindowFactory : ToolWindowFactory, DumbAware {
 
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         val propertiesComponent = PropertiesComponent.getInstance(project)

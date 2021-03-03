@@ -10,6 +10,8 @@ so that you can watch cat videos while your Spring context is starting.
 Inspired by https://github.com/Jonatha1983/GIdeaBrowser.
 <!-- Plugin description end -->
 
+![plugin_logo](src/main/resources/META-INF/pluginIcon.svg)
+
 ## Installation
 
 - Using IDE built-in plugin system:

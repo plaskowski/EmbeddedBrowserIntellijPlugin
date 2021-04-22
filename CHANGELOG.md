@@ -4,16 +4,8 @@
 
 ## [Unreleased]
 ### Added
+- Compatibility with Intellij 2021.1
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.6]
 ### Changed
 - tool window is no longer blocked during indexing

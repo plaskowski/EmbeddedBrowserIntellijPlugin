@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [0.0.7]
+### Added
 - Compatibility with Intellij 2021.1
 
 ## [0.0.6]

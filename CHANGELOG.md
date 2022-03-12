@@ -4,8 +4,10 @@
 
 ## [Unreleased]
 ### Added
+- Compatibility with Intellij 2021.3
 
 ### Changed
+- Rewrote toolbar as native Intellij toolbar
 
 ### Deprecated
 

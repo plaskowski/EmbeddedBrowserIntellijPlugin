@@ -3,19 +3,14 @@
 # EmbeddedBrowserIntellijPlugin Changelog
 
 ## [Unreleased]
+
+## [1.1.0]
 ### Added
 - Compatibility with Intellij 2021.3
 
 ### Changed
 - Rewrote toolbar as native Intellij toolbar
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.7]
 ### Added
 - Compatibility with Intellij 2021.1
@@ -41,6 +36,7 @@
 ### Added
 - "back" action
   
+
 ### Changed
 -  Update URL field when navigating from displayed page
 

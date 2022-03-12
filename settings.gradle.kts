@@ -1,1 +1,1 @@
-rootProject.name = "EmbeddedBrowserIntellijPlugin"
+rootProject.name = "intellij-plugin-template"

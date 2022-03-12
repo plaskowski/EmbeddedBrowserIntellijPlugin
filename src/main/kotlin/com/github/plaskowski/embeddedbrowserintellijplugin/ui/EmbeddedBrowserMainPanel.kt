@@ -1,74 +1,76 @@
 package com.github.plaskowski.embeddedbrowserintellijplugin.ui
 
+import com.intellij.icons.AllIcons
 import com.intellij.openapi.Disposable
+import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.ui.SimpleToolWindowPanel
-import com.intellij.ui.IdeBorderFactory
-import com.intellij.ui.SideBorder
 import com.intellij.ui.jcef.JBCefBrowser
-import com.intellij.util.ui.UIUtil
 import java.awt.BorderLayout
-import java.awt.Dimension
-import javax.swing.ImageIcon
-import javax.swing.JButton
 import javax.swing.JPanel
-import javax.swing.JTextField
-import javax.swing.JToolBar
 
 private const val ZOOM_IN_STEP = 1.25
 private const val ZOOM_OUT_STEP = 0.75
-private const val TOOLBAR_ICON_WIDTH = 32
-private const val TOOLBAR_ICON_HEIGHT = 30
 
 @Suppress("UnstableApiUsage")
 class EmbeddedBrowserMainPanel(initialUrl: String) : SimpleToolWindowPanel(true, true), Disposable {
 
     private val jbCefBrowser: JBCefBrowser = JBCefBrowser(initialUrl)
+    private val toolbar: ActionToolbar
 
     init {
-        val border = IdeBorderFactory.createBorder(UIUtil.getBoundsColor(), SideBorder.ALL)
         val mainPanel = JPanel(BorderLayout())
-        mainPanel.border = border
-        val toolbar = buildToolbar()
-        toolbar.border = border
+        toolbar = buildToolbar()
 
         mainPanel.add(jbCefBrowser.component, BorderLayout.CENTER)
-        mainPanel.add(toolbar, BorderLayout.NORTH)
+        mainPanel.add(toolbar.component, BorderLayout.NORTH)
         setContent(mainPanel)
     }
 
-    private fun buildToolbar(): JToolBar {
-        val toolbar = JToolBar()
-        val backButton = createToolbarIconButton("/actions/back.png")
-        val urlTextField = JTextField()
-        val refreshButton = createToolbarIconButton("/actions/refresh.png")
-        val zoomInButton = createToolbarIconButton("/general/zoomIn.png")
-        val zoomOutButton = createToolbarIconButton("/general/zoomOut.png")
+    private fun buildToolbar(): ActionToolbar {
+        val am = ActionManager.getInstance()
+        val urlFieldAction = UrlFieldAction(jbCefBrowser)
+        jbCefBrowser.cefBrowser.client.addDisplayHandler(CefUrlChangeHandler { url -> urlFieldAction.text = url ?: "" })
+        return am.createActionToolbar(
+            ActionPlaces.TOOLBAR, DefaultActionGroup(
+                BackAction(jbCefBrowser),
+                urlFieldAction,
+                ReloadAction(jbCefBrowser),
+                ZoomInAction(jbCefBrowser),
+                ZoomOutAction(jbCefBrowser)
+            ), true
+        )
+    }
 
-        backButton.addActionListener {
+    class ZoomInAction(private val jbCefBrowser: JBCefBrowser) : AnAction(AllIcons.General.ZoomIn) {
+        override fun actionPerformed(e: AnActionEvent) {
+            jbCefBrowser.zoomLevelEx *= ZOOM_IN_STEP
+        }
+    }
+
+    class ZoomOutAction(private val jbCefBrowser: JBCefBrowser) : AnAction(AllIcons.General.ZoomOut) {
+        override fun actionPerformed(e: AnActionEvent) {
+            jbCefBrowser.zoomLevelEx *= ZOOM_OUT_STEP
+        }
+    }
+
+    class UrlFieldAction(private val jbCefBrowser: JBCefBrowser) : TextFieldAction("", "URL", null, 25) {
+        override fun perform() {
+            jbCefBrowser.loadURL(text)
+        }
+    }
+
+    class BackAction(private val jbCefBrowser: JBCefBrowser) : AnAction(AllIcons.Actions.Back) {
+        override fun actionPerformed(e: AnActionEvent) {
             if (jbCefBrowser.cefBrowser.canGoBack()) {
                 jbCefBrowser.cefBrowser.goBack()
             }
         }
-        urlTextField.addActionListener { jbCefBrowser.loadURL(urlTextField.text) }
-        refreshButton.addActionListener { jbCefBrowser.cefBrowser.reload() }
-        zoomInButton.addActionListener { jbCefBrowser.zoomLevelEx *= ZOOM_IN_STEP }
-        zoomOutButton.addActionListener { jbCefBrowser.zoomLevelEx *= ZOOM_OUT_STEP }
-        jbCefBrowser.cefBrowser.client.addDisplayHandler(CefUrlChangeHandler { url -> urlTextField.text = url })
-
-        toolbar.add(backButton)
-        toolbar.add(urlTextField)
-        toolbar.add(refreshButton)
-        toolbar.add(zoomInButton)
-        toolbar.add(zoomOutButton)
-        return toolbar
     }
 
-    private fun createToolbarIconButton(iconPath: String): JButton {
-        val button = JButton()
-        button.icon = ImageIcon(javaClass.getResource(iconPath))
-        button.preferredSize = Dimension(TOOLBAR_ICON_WIDTH, TOOLBAR_ICON_HEIGHT)
-        button.text = ""
-        return button
+    class ReloadAction(private val jbCefBrowser: JBCefBrowser) : AnAction(AllIcons.Actions.Refresh) {
+        override fun actionPerformed(e: AnActionEvent) {
+            jbCefBrowser.cefBrowser.reload()
+        }
     }
 
     override fun dispose() {

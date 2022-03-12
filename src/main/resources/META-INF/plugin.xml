@@ -1,18 +1,15 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.plaskowski.intellijplugintemplate</id>
-    <name>intellij-plugin-template</name>
+    <id>com.github.plaskowski.embeddedbrowserintellijplugin</id>
+    <name>EmbeddedBrowser</name>
     <vendor>plaskowski</vendor>
 
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.plaskowski.intellijplugintemplate.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.plaskowski.intellijplugintemplate.services.MyProjectService"/>
+        <toolWindow id="Embedded Browser" anchor="right"
+            factoryClass="com.github.plaskowski.embeddedbrowserintellijplugin.ui.EmbeddedBrowserToolWindowFactory"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.plaskowski.intellijplugintemplate.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>

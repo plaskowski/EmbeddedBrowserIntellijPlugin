@@ -12,7 +12,7 @@ private const val ZOOM_IN_STEP = 1.25
 private const val ZOOM_OUT_STEP = 0.75
 
 @Suppress("UnstableApiUsage")
-class EmbeddedBrowserMainPanel(initialUrl: String) : SimpleToolWindowPanel(true, true), Disposable {
+class EmbeddedBrowserMainPanel(private val initialUrl: String) : SimpleToolWindowPanel(true, true), Disposable {
 
     private val jbCefBrowser: JBCefBrowser = JBCefBrowser(initialUrl)
     private val toolbar: ActionToolbar
@@ -30,8 +30,9 @@ class EmbeddedBrowserMainPanel(initialUrl: String) : SimpleToolWindowPanel(true,
         val am = ActionManager.getInstance()
         val urlFieldAction = UrlFieldAction(jbCefBrowser)
         jbCefBrowser.cefBrowser.client.addDisplayHandler(CefUrlChangeHandler { url -> urlFieldAction.text = url ?: "" })
-        return am.createActionToolbar(
+        val actionToolbar = am.createActionToolbar(
             ActionPlaces.TOOLBAR, DefaultActionGroup(
+                HomePageAction(jbCefBrowser, initialUrl),
                 BackAction(jbCefBrowser),
                 urlFieldAction,
                 ReloadAction(jbCefBrowser),
@@ -39,6 +40,8 @@ class EmbeddedBrowserMainPanel(initialUrl: String) : SimpleToolWindowPanel(true,
                 ZoomOutAction(jbCefBrowser)
             ), true
         )
+        actionToolbar.targetComponent = this
+        return actionToolbar
     }
 
     class ZoomInAction(private val jbCefBrowser: JBCefBrowser) : AnAction(AllIcons.General.ZoomIn) {
@@ -70,6 +73,13 @@ class EmbeddedBrowserMainPanel(initialUrl: String) : SimpleToolWindowPanel(true,
     class ReloadAction(private val jbCefBrowser: JBCefBrowser) : AnAction(AllIcons.Actions.Refresh) {
         override fun actionPerformed(e: AnActionEvent) {
             jbCefBrowser.cefBrowser.reload()
+        }
+    }
+
+    class HomePageAction(private val jbCefBrowser: JBCefBrowser, private val initialUrl: String) :
+        AnAction(AllIcons.Nodes.HomeFolder) {
+        override fun actionPerformed(e: AnActionEvent) {
+            jbCefBrowser.cefBrowser.loadURL(initialUrl)
         }
     }
 

@@ -3,6 +3,7 @@
 # EmbeddedBrowserIntellijPlugin Changelog
 
 ## [Unreleased]
+- Added HomePage action to the toolbar
 
 ## [1.4.0] - 2023-04-19
 

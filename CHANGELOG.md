@@ -3,6 +3,8 @@
 # EmbeddedBrowserIntellijPlugin Changelog
 
 ## [Unreleased]
+### Added
+- Compatibility with Intellij 2023.2
 
 ## [1.5.0] - 2023-05-13
 - Added HomePage action to the toolbar

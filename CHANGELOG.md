@@ -3,6 +3,9 @@
 # EmbeddedBrowserIntellijPlugin Changelog
 
 ## [Unreleased]
+
+## [1.5.1] - 2023-09-28
+
 ### Added
 - Compatibility with Intellij 2023.2
 
@@ -75,7 +78,8 @@
 ### Added
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/plaskowski/EmbeddedBrowserIntellijPlugin/compare/v1.2.0...v1.3.0

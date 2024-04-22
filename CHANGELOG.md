@@ -3,6 +3,8 @@
 # EmbeddedBrowserIntellijPlugin Changelog
 
 ## [Unreleased]
+### Added
+- Compatibility with Intellij 2024.1
 
 ## [1.5.2] - 2023-12-08
 

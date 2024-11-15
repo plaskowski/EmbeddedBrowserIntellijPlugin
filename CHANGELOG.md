@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Compatibility with Intellij 2024.3
+
 ## [1.5.4] - 2024-09-26
 
 ### Added

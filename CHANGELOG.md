@@ -6,6 +6,12 @@
 
 ### Added
 
+- Compatibility with Intellij 2025.1
+
+## [1.5.5]
+
+### Added
+
 - Compatibility with Intellij 2024.3
 
 ## [1.5.4] - 2024-09-26

@@ -1,0 +1,25 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/dev/private/yt-playlist-copier">
+          <value>
+            <RecentProjectMetaInfo frameTitle="yt-playlist-copier" opened="true" projectWorkspaceId="2AhLSwIRzpCvGCcPKWSA7mk6rAP">
+              <option name="activationTimestamp" value="1774442425696" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IU-253.30387.90" />
+              <option name="buildTimestamp" value="1769058000000" />
+              <option name="colorInfo">
+                <RecentProjectColorInfo associatedIndex="2" />
+              </option>
+              <frame x="165" y="81" width="1400" height="1000" />
+              <option name="productionCode" value="IU" />
+              <option name="projectOpenTimestamp" value="1774442426619" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastOpenedProject" value="$USER_HOME$/dev/private/yt-playlist-copier" />
+  </component>
+</application>

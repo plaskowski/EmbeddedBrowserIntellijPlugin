@@ -1,0 +1,16 @@
+<application>
+  <component name="ActionsLocalSummary">
+    <e n="ActivateEmbeddedBrowserToolWindow">
+      <i c="1" d="1" l="1774442440924" k="1774442440924" />
+    </e>
+    <e n="GotoAction">
+      <i c="1" l="1774442436855" />
+    </e>
+    <e n="WelcomeScreen.OpenProject">
+      <i c="1" l="1774442408918" />
+    </e>
+    <e n="com.intellij.openapi.project.DumbAwareAction$SimpleDumbAwareAction">
+      <i c="1" l="1774442440906" />
+    </e>
+  </component>
+</application>

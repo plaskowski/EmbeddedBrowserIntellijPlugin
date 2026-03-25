@@ -1,0 +1,91 @@
+ByteCodeViewer|JVM Tools
+Coverage|JVM Tools
+Docker|Deployment
+Git4Idea|Version Controls
+HtmlTools|HTML and XML
+JUnit|Test Tools
+JavaScriptDebugger|JavaScript Frameworks and Tools
+Lombook Plugin|JVM Frameworks
+PerforceDirectPlugin|Version Controls
+Subversion|Version Controls
+TestNG-J|Test Tools
+XPathView|HTML and XML
+com.android.tools.gradle.dcl|null
+com.intellij.code.provenance|null
+com.intellij.completion.ml.ranking|Local AI/ML Tools
+com.intellij.compose|Kotlin Frameworks
+com.intellij.configurationScript|IDE Settings
+com.intellij.copyright|IDE Settings
+com.intellij.database|Database
+com.intellij.debugger.collections.visualizer|JVM Tools
+com.intellij.dev|Platform Development
+com.intellij.diagram|Other Tools
+com.intellij.findusages.ml|Local AI/ML Tools
+com.intellij.gradle|Build Tools
+com.intellij.java-i18n|JVM Tools
+com.intellij.java.ide|IDE Settings
+com.intellij.javaee.el|JVM Frameworks
+com.intellij.javaee|JVM Frameworks
+com.intellij.java|Languages
+com.intellij.ja|IDE Localization
+com.intellij.jpa.jpb.model|JVM Frameworks
+com.intellij.jsonpath|Languages
+com.intellij.ko|IDE Localization
+com.intellij.kubernetes|Deployment
+com.intellij.mcpServer|AI-Powered
+com.intellij.microservices.jvm|JVM Frameworks
+com.intellij.microservices.ui|Microservices
+com.intellij.modules.json|Languages
+com.intellij.notebooks.core|null
+com.intellij.platform.images|null
+com.intellij.plugins.eclipsekeymap|Keymap
+com.intellij.plugins.netbeanskeymap|Keymap
+com.intellij.plugins.visualstudiokeymap|Keymap
+com.intellij.properties|Languages
+com.intellij.searcheverywhere.ml|Local AI/ML Tools
+com.intellij.settingsSync|IDE Settings
+com.intellij.spring.boot.initializr|JVM Frameworks
+com.intellij.spring|JVM Frameworks
+com.intellij.swagger|Microservices
+com.intellij.tasks|Other Tools
+com.intellij.thymeleaf|Template Languages
+com.intellij.zh|IDE Localization
+com.intellij|null
+com.jetbrains.codeWithMe|Remote Development
+com.jetbrains.performancePlugin.async|Platform Development
+com.jetbrains.performancePlugin|Platform Development
+com.jetbrains.remoteDevServer|Remote Development
+com.jetbrains.restClient|Microservices
+com.jetbrains.sh|Languages
+com.jetbrains.station|Remote Development
+hg4idea|Version Controls
+idea.plugin.protoeditor|Languages
+intellij.git.commit.modal|Version Controls
+intellij.grid.plugin|null
+intellij.indexing.shared.core|null
+intellij.jupyter|null
+intellij.ktor|Kotlin Frameworks
+intellij.platform.ijent.impl|Remote Development
+org.editorconfig.editorconfigjetbrains|IDE Settings
+org.intellij.groovy|Languages
+org.intellij.plugins.markdown|Languages
+org.intellij.qodana|null
+org.jetbrains.completion.full.line|Local AI/ML Tools
+org.jetbrains.debugger.streams|JVM Tools
+org.jetbrains.idea.eclipse|Other Tools
+org.jetbrains.idea.gradle.dsl|null
+org.jetbrains.idea.maven|Build Tools
+org.jetbrains.idea.reposearch|Build Tools
+org.jetbrains.java.decompiler|JVM Tools
+org.jetbrains.kotlin|Languages
+org.jetbrains.plugins.github|Version Controls
+org.jetbrains.plugins.gitlab|Version Controls
+org.jetbrains.plugins.gradle|Build Tools
+org.jetbrains.plugins.kotlin.jupyter|null
+org.jetbrains.plugins.terminal|Other Tools
+org.jetbrains.plugins.textmate|Languages
+org.jetbrains.plugins.yaml|Languages
+org.jetbrains.security.package-checker|null
+org.toml.lang|Languages
+tanvd.grazi|Languages
+training|null

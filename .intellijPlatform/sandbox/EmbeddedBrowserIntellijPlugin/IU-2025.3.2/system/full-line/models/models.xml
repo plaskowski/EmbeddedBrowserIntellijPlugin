@@ -1,0 +1,17 @@
+<models version="1">
+  <model>
+    <version>0.1.247-native-llama-bundle</version>
+    <size>68858390</size>
+    <languages>
+      <language>kotlin</language>
+    </languages>
+    <binary>flcc.model</binary>
+    <bpe>flcc.bpe</bpe>
+    <config>flcc.json</config>
+    <native>
+      <archive>full-line-inference.zip</archive>
+      <version>2.4.164</version>
+    </native>
+    <changelog>- Updated LLaMA model for Kotlin trained on split with CG (no finetune) and updated metadata headers</changelog>
+  </model>
+</models>

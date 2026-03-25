@@ -1,0 +1,5 @@
+<application>
+  <component name="AIOnboardingPromoWindowAdvisor">
+    <option name="attempts" value="2" />
+  </component>
+</application>

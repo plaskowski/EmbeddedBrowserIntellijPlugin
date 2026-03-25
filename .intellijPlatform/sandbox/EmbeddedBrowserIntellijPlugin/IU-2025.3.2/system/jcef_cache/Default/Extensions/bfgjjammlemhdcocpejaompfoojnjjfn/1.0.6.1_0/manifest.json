@@ -1,0 +1,31 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "icon128.png",
+         "16": "icon16.png",
+         "48": "icon48.png"
+      }
+   },
+   "background": {
+      "service_worker": "event.js"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "Install and manage printers and print jobs using PrinterLogic.",
+   "host_permissions": [ "*://*/*" ],
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgyUbePveMnUm5amCv+dEImFqCiRhOuIjJ+NjIUHgGCUrDuTRjRr0kQbn3WW/Wcp1w9ClF+usozOqQo3LrsAnf3ZJAy8H8TLtJefLD/lhnCL7evsvvG6t5A3Y7zJjjbgPXGhJGLszh0peUMPV+699ikn2cbuzS3kcRrtff5Kd4/l6z+Bj/SB4w/X2iTuOh+yIqnD6NiawZ+o/UjA99KSrk1Qgvg8jb6z2ybI2T0Y+mnbMaTtFBmbBeb+1VmDhccsbW3mpz8XBSR3CofnTY8MPawuQ4OifCyj2mqzQlgNmdNtS2D5zVdabmWDhLf95MOrEPcDTh2vCne8VHoZK+GLOcwIDAQAB",
+   "manifest_version": 3,
+   "name": "PrinterLogic Extension v1.0.6.1",
+   "permissions": [ "activeTab", "nativeMessaging" ],
+   "short_name": "PrinterLogic Extension",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.6.1"
+}

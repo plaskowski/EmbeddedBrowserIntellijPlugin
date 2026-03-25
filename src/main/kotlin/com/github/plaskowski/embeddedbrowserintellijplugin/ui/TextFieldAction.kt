@@ -7,7 +7,6 @@ import com.intellij.openapi.actionSystem.ex.CustomComponentAction
 import com.intellij.openapi.project.DumbAware
 import com.intellij.ui.ClickListener
 import com.intellij.ui.components.JBTextField
-import com.intellij.util.ui.JBUI
 import java.awt.BorderLayout
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
@@ -62,7 +61,6 @@ abstract class TextFieldAction protected constructor(
         panel.add(label, BorderLayout.EAST)
         myField.toolTipText = myDescription
         label.toolTipText = myDescription
-        panel.border = JBUI.Borders.empty(4, 0, 4, 0)
         object : ClickListener() {
             override fun onClick(e: MouseEvent, clickCount: Int): Boolean {
                 perform()

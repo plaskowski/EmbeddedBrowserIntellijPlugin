@@ -7,10 +7,10 @@ import com.intellij.notification.NotificationType
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.application.ex.ApplicationEx
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.ui.SimpleToolWindowPanel
+import com.intellij.ui.jcef.JBCefApp
 import com.intellij.ui.jcef.JBCefBrowser
 import com.intellij.ui.jcef.JBCefBrowserBuilder
 import java.awt.BorderLayout
@@ -27,16 +27,32 @@ class EmbeddedBrowserMainPanel(
     private val settings: EmbeddedBrowserSettings
 ) : SimpleToolWindowPanel(true, true), Disposable {
 
-    private val jbCefBrowser: JBCefBrowser = JBCefBrowserBuilder().setUrl(initialUrl).build()
-    private val toolbar: ActionToolbar
+    private var jbCefBrowser: JBCefBrowser = JBCefBrowserBuilder().setUrl(initialUrl).build()
+    private var toolbar: ActionToolbar
+    private val contentPanel = JPanel(BorderLayout())
 
     init {
-        val mainPanel = JPanel(BorderLayout())
         toolbar = buildToolbar()
+        contentPanel.add(jbCefBrowser.component, BorderLayout.CENTER)
+        contentPanel.add(toolbar.component, BorderLayout.NORTH)
+        setContent(contentPanel)
+    }
 
-        mainPanel.add(jbCefBrowser.component, BorderLayout.CENTER)
-        mainPanel.add(toolbar.component, BorderLayout.NORTH)
-        setContent(mainPanel)
+    private fun destroyBrowser() {
+        contentPanel.remove(jbCefBrowser.component)
+        contentPanel.remove(toolbar.component)
+        jbCefBrowser.dispose()
+        contentPanel.revalidate()
+        contentPanel.repaint()
+    }
+
+    private fun recreateBrowser() {
+        jbCefBrowser = JBCefBrowserBuilder().setUrl(settings.initialUrl).build()
+        toolbar = buildToolbar()
+        contentPanel.add(jbCefBrowser.component, BorderLayout.CENTER)
+        contentPanel.add(toolbar.component, BorderLayout.NORTH)
+        contentPanel.revalidate()
+        contentPanel.repaint()
     }
 
     private fun buildToolbar(): ActionToolbar {
@@ -56,7 +72,8 @@ class EmbeddedBrowserMainPanel(
                 ReloadAction(jbCefBrowser),
                 ZoomInAction(jbCefBrowser),
                 ZoomOutAction(jbCefBrowser),
-                RefreshProfileAction(project, settings)
+                Separator.getInstance(),
+                RefreshProfileAction(project, settings, ::destroyBrowser, ::recreateBrowser)
             ), true
         )
         actionToolbar.targetComponent = this
@@ -110,8 +127,10 @@ class EmbeddedBrowserMainPanel(
 
     class RefreshProfileAction(
         private val project: Project,
-        private val settings: EmbeddedBrowserSettings
-    ) : AnAction("Refresh Profile", "Copy seed profile to runtime directory and restart IDE", AllIcons.Actions.ForceRefresh) {
+        private val settings: EmbeddedBrowserSettings,
+        private val destroyBrowser: () -> Unit,
+        private val recreateBrowser: () -> Unit
+    ) : AnAction("Refresh Profile", "Copy seed profile to runtime directory and refresh browser", AllIcons.Actions.ForceRefresh) {
 
         override fun update(e: AnActionEvent) {
             e.presentation.isEnabledAndVisible =
@@ -121,23 +140,38 @@ class EmbeddedBrowserMainPanel(
         override fun actionPerformed(e: AnActionEvent) {
             val seedPath = settings.seedProfilePath ?: return
             val cachePath = settings.cachePath ?: return
+            val isOutOfProcess = isJCEFRemoteEnabled()
+            val message = if (isOutOfProcess)
+                "This will copy the seed profile from:\n$seedPath\n\nto:\n$cachePath\n\nThe browser will restart without closing the IDE. Proceed?"
+            else
+                "This will copy the seed profile from:\n$seedPath\n\nto:\n$cachePath\n\nYou will need to restart the IDE afterwards to apply changes. Proceed?"
             val confirmed = Messages.showOkCancelDialog(
                 project,
-                "This will copy the seed profile from:\n$seedPath\n\nto:\n$cachePath\n\nThe IDE will restart immediately after. Proceed?",
+                message,
                 "Refresh Browser Profile",
-                "Refresh & Restart",
+                "Refresh",
                 "Cancel",
                 Messages.getQuestionIcon()
             ) == Messages.OK
             if (!confirmed) return
 
+            destroyBrowser()
             ApplicationManager.getApplication().executeOnPooledThread {
                 try {
                     val src = File(seedPath)
                     val dst = File(cachePath)
                     dst.deleteRecursively()
                     src.copyRecursively(dst, overwrite = true)
-                    (ApplicationManager.getApplication() as ApplicationEx).restart(true)
+                    if (tryRestartJCEF()) {
+                        ApplicationManager.getApplication().invokeLater { recreateBrowser() }
+                    } else {
+                        ApplicationManager.getApplication().invokeLater {
+                            NotificationGroupManager.getInstance()
+                                .getNotificationGroup("EmbeddedBrowser")
+                                .createNotification("Profile copied. Restart the IDE to apply changes.", NotificationType.INFORMATION)
+                                .notify(project)
+                        }
+                    }
                 } catch (ex: Exception) {
                     ApplicationManager.getApplication().invokeLater {
                         NotificationGroupManager.getInstance()
@@ -146,6 +180,29 @@ class EmbeddedBrowserMainPanel(
                             .notify(project)
                     }
                 }
+            }
+        }
+
+        private fun isJCEFRemoteEnabled(): Boolean {
+            return try {
+                val method = JBCefApp::class.java.getDeclaredMethod("isRemoteEnabled")
+                method.isAccessible = true
+                method.invoke(null) as Boolean
+            } catch (_: Exception) {
+                false
+            }
+        }
+
+        private fun tryRestartJCEF(): Boolean {
+            return try {
+                val jbCefApp = JBCefApp.getInstance()
+                val method = jbCefApp.javaClass.getDeclaredMethod(
+                    "restartJCEF", Boolean::class.java, Boolean::class.java
+                )
+                method.isAccessible = true
+                method.invoke(jbCefApp, false, false) as Boolean
+            } catch (_: Exception) {
+                false
             }
         }
 

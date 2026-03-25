@@ -130,6 +130,10 @@ tasks {
     publishPlugin {
         dependsOn(patchChangelog)
     }
+
+    runIde {
+        jvmArgs("-Djcef.remote.enabled=true")
+    }
 }
 
 intellijPlatformTesting {

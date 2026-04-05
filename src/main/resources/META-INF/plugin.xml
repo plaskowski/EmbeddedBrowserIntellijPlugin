@@ -8,6 +8,11 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.github.plaskowski.embeddedbrowserintellijplugin.EmbeddedBrowserAppSettings"/>
+        <applicationConfigurable
+            instance="com.github.plaskowski.embeddedbrowserintellijplugin.ui.EmbeddedBrowserConfigurable"
+            displayName="Embedded Browser"
+            parentId="tools"/>
         <projectService serviceImplementation="com.github.plaskowski.embeddedbrowserintellijplugin.EmbeddedBrowserSettings"/>
         <notificationGroup id="EmbeddedBrowser" displayType="BALLOON" isLogByDefault="false"/>
         <toolWindow id="Embedded Browser" anchor="right"

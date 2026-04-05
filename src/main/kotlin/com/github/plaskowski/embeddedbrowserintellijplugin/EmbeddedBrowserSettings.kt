@@ -15,10 +15,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 @Service(Service.Level.PROJECT)
 class EmbeddedBrowserSettings : PersistentStateComponent<EmbeddedBrowserSettings> {
 
-    var cachePath: String? = null
     var initialUrl: String = "https://youtube.com"
-    var userAgent: String? = null
-    var seedProfilePath: String? = null
 
     override fun getState(): EmbeddedBrowserSettings = this
 

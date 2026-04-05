@@ -1,5 +1,6 @@
 package com.github.plaskowski.embeddedbrowserintellijplugin.ui
 
+import com.github.plaskowski.embeddedbrowserintellijplugin.EmbeddedBrowserAppSettings
 import com.github.plaskowski.embeddedbrowserintellijplugin.EmbeddedBrowserSettings
 import com.intellij.icons.AllIcons
 import com.intellij.notification.NotificationGroupManager
@@ -22,12 +23,12 @@ private const val ZOOM_OUT_STEP = 0.75
 
 @Suppress("UnstableApiUsage")
 class EmbeddedBrowserMainPanel(
-    private val initialUrl: String,
     private val project: Project,
-    private val settings: EmbeddedBrowserSettings
+    private val projectSettings: EmbeddedBrowserSettings,
+    private val appSettings: EmbeddedBrowserAppSettings
 ) : SimpleToolWindowPanel(true, true), Disposable {
 
-    private var jbCefBrowser: JBCefBrowser = JBCefBrowserBuilder().setUrl(initialUrl).build()
+    private var jbCefBrowser: JBCefBrowser = JBCefBrowserBuilder().setUrl(projectSettings.initialUrl).build()
     private var toolbar: ActionToolbar
     private val contentPanel = JPanel(BorderLayout())
 
@@ -47,7 +48,7 @@ class EmbeddedBrowserMainPanel(
     }
 
     private fun recreateBrowser() {
-        jbCefBrowser = JBCefBrowserBuilder().setUrl(settings.initialUrl).build()
+        jbCefBrowser = JBCefBrowserBuilder().setUrl(projectSettings.initialUrl).build()
         toolbar = buildToolbar()
         contentPanel.add(jbCefBrowser.component, BorderLayout.CENTER)
         contentPanel.add(toolbar.component, BorderLayout.NORTH)
@@ -61,19 +62,19 @@ class EmbeddedBrowserMainPanel(
         jbCefBrowser.cefBrowser.client.addDisplayHandler(CefUrlChangeHandler { url ->
             if (url != null && url != "about:blank") {
                 urlFieldAction.text = url
-                settings.initialUrl = url
+                projectSettings.initialUrl = url
             }
         })
         val actionToolbar = am.createActionToolbar(
             ActionPlaces.TOOLBAR, DefaultActionGroup(
-                HomePageAction(jbCefBrowser, initialUrl),
+                HomePageAction(jbCefBrowser, projectSettings.initialUrl),
                 BackAction(jbCefBrowser),
                 urlFieldAction,
                 ReloadAction(jbCefBrowser),
                 ZoomInAction(jbCefBrowser),
                 ZoomOutAction(jbCefBrowser),
                 Separator.getInstance(),
-                RefreshProfileAction(project, settings, ::destroyBrowser, ::recreateBrowser)
+                RefreshProfileAction(project, appSettings, ::destroyBrowser, ::recreateBrowser)
             ), true
         )
         actionToolbar.targetComponent = this
@@ -127,19 +128,18 @@ class EmbeddedBrowserMainPanel(
 
     class RefreshProfileAction(
         private val project: Project,
-        private val settings: EmbeddedBrowserSettings,
+        private val appSettings: EmbeddedBrowserAppSettings,
         private val destroyBrowser: () -> Unit,
         private val recreateBrowser: () -> Unit
     ) : AnAction("Refresh Profile", "Copy seed profile to runtime directory and refresh browser", AllIcons.Actions.ForceRefresh) {
 
         override fun update(e: AnActionEvent) {
-            e.presentation.isEnabledAndVisible =
-                settings.seedProfilePath != null && settings.cachePath != null
+            e.presentation.isEnabledAndVisible = appSettings.seedProfilePath != null
         }
 
         override fun actionPerformed(e: AnActionEvent) {
-            val seedPath = settings.seedProfilePath ?: return
-            val cachePath = settings.cachePath ?: return
+            val seedPath = appSettings.seedProfilePath ?: return
+            val cachePath = EmbeddedBrowserAppSettings.resolveCachePath()
             val isOutOfProcess = isJCEFRemoteEnabled()
             val message = if (isOutOfProcess)
                 "This will copy the seed profile from:\n$seedPath\n\nto:\n$cachePath\n\nThe browser will restart without closing the IDE. Proceed?"
